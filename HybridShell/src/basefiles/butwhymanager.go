@@ -34,7 +34,7 @@ func main() {
 	greenc := color.New(color.FgHiGreen, color.Bold)
 	cyanc := color.New(color.FgCyan, color.Bold)
 	var recvdcmd [512]byte
-	cyanc.Println("RSA Tunnell...")
+	cyanc.Println("Hybrid Tunnell...")
 	listner, _ := net.Listen("tcp", LOCALPORT)
 	conn, _ := listner.Accept()
 	keyval := generateKey()
