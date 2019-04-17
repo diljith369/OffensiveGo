@@ -4,7 +4,7 @@
 
 ## Getting Started
 
-##### git clone https://github.com/diljithishere/OffensiveGo/HybridShell/src/download/win/32/ButY.zip
+##### Download https://github.com/diljithishere/OffensiveGo/HybridShell/src/download/win/32/ButYWin32.zip
 ##### Unzip the ButY.zip file
 ####  Run butYbuilder.exe
 ### Set it up in Windows 
