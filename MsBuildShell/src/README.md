@@ -10,7 +10,7 @@
 ####  Run tduReverseShelllBuilder.exe
 
 ### Set it up in Linux 
-#### set GOARCH=386
+#### export GOARCH="386"
 ##### Download https://github.com/diljithishere/OffensiveGo/HybridShell/src/download/linux/32/tduReverseShelllBuilder.zip
 ##### Unzip the tduReverseShelllBuilder.zip file
 ####  Run tduReverseShelllBuilder

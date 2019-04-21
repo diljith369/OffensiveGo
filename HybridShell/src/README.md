@@ -10,7 +10,7 @@
 ####  Run butYbuilder.exe
 
 ### Set it up in Linux 
-#### set GOARCH=386
+#### export GOARCH="386"
 ##### Download https://github.com/diljithishere/OffensiveGo/HybridShell/src/download/win/32/ButYLinux32.zip
 ##### Unzip the ButYLinux32.zip file
 ####  Run butYbuilder
