@@ -39,14 +39,14 @@ func main() {
 	agentname, _ = reader.ReadString('\n')
 	agentname = strings.TrimSuffix(agentname, "\r\n")
 
-	updatetemplate("basefiles/msbuildclient.go", "download/msbuildclient.go", lhost, lport)
-	buildexe("download/"+agentname, "download/msbuildclient.go")
-	os.Remove("download/msbuildclient.go")
+	updatetemplate("basefiles/msbuildClient.go", "download/msbuildClient.go", lhost, lport)
+	buildexe("download/"+agentname, "download/msbuildClient.go")
+	os.Remove("download/msbuildClient.go")
 
 	//updatetemplate("basefiles/butymanager.go", "basefiles/butymanager.go", lport, butymngrpvtkey, butyclientpubkey)
 	//buildexe("download/butymanager.exe", "basefiles/butymanager.go")
 	//os.Remove("download/butymanager.go")
-	os.Remove("download/msbuildclient.go")
+	//os.Remove("download/msbuildclient.go")
 }
 
 func updatetemplate(basefilepath, outfilepath, lhost, lport string) {
