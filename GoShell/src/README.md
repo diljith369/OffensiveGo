@@ -1,6 +1,6 @@
 # GoShell  An encrypted shell code launcher.
 
-##### This is another unique FUD reverse shell that uses generates a custom shell launcher .
+##### This is another unique FUD custom shell launcher .
 
 ## Getting Started
 
