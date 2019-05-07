@@ -7,6 +7,8 @@
 ### 1 : A Hybrid encryption reverse shell
 ### 2 : A Trusted Developer Utilities (msbuild) reverse shell
 ### 3 : Custom shell code launcher
-### Author
+### 4 : InstallUtil reverse shell
+### 5 : Simpleshell reverse shell
 
-#### * **Diljith S** - *Initial work* - (https://github.com/diljithishere)
+### Author
+#### * **Diljith S** - *Initial work* - https://github.com/diljithishere

@@ -45,7 +45,7 @@ func main() {
 	buildsimpleshell("basefile/simpleshell.go", "download/agent.go", lhost+":"+lport)
 	buildexe("download/"+agentname+".exe", "download/agent.go")
 	buildsimpleshell("basefile/simpleshellmngr.go", "download/simpleshellmngr.go", lport)
-	buildexe("download/gotcha.exe", "download/simpleshellmngr.go")
+	buildmanger("download/gotcha", "download/simpleshellmngr.go")
 	os.Remove("download/simpleshellmngr.go")
 	os.Remove("download/agent.go")
 }
@@ -102,6 +102,35 @@ func copyfile(sourcepath, destpath string) {
 
 	if err = scanner.Err(); err != nil {
 		log.Fatal(err)
+	}
+}
+
+func buildmanger(exepath string, gofilepath string) {
+	if runtime.GOOS == "linux" {
+		cmdpath, _ := exec.LookPath("bash")
+		execargs := "GOARCH=386 go build -o " + exepath + " " + gofilepath
+		fmt.Println(execargs)
+		cmd := exec.Command(cmdpath, "-c", execargs)
+		err := cmd.Start()
+		cmd.Wait()
+		if err != nil {
+			fmt.Println(err)
+		} else {
+			fmt.Println(exepath)
+			//fmt.Println(gofilepath)
+			fmt.Println("Build Success !")
+		}
+	} else {
+		cmd := exec.Command("go", "build", "-o", exepath+".exe", gofilepath)
+		err := cmd.Start()
+		cmd.Wait()
+		if err != nil {
+			fmt.Println(err)
+		} else {
+			fmt.Println(exepath)
+			//fmt.Println(gofilepath)
+			fmt.Println("Build Success !")
+		}
 	}
 }
 
