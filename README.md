@@ -9,6 +9,7 @@
 ### 3 : Custom shell code launcher
 ### 4 : InstallUtil reverse shell
 ### 5 : Simpleshell reverse shell
+### 6 : Power Shell reverse shell 
 
 ### Author
 #### * **Diljith S** - *Initial work* - https://github.com/diljithishere
